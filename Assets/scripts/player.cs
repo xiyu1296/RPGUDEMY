@@ -43,6 +43,7 @@ public class player :MonoBehaviour
     public playerDashState DashState { get; private set; }
     public playerSlideWallState SlideWall { get; private set;}
     public playerJumpWallState JumpWall { get; private set; }
+    public playerAttackState Attack1State { get; private set; }
 
     public void Awake()
     {
@@ -57,6 +58,7 @@ public class player :MonoBehaviour
         DashState = new playerDashState(this, PlayerStateMachine, "Dash");
         SlideWall = new playerSlideWallState(this, PlayerStateMachine, "SlideWall");
         JumpWall = new playerJumpWallState(this, PlayerStateMachine, "Jump");
+        Attack1State = new playerAttackState(this, PlayerStateMachine, "Attack1");
         
     }
 
@@ -73,6 +75,8 @@ public class player :MonoBehaviour
         PlayerStateMachine.currentState.Update();
         DashController();
     }
+
+    public void AnimationTrigger() => PlayerStateMachine.currentState.AnimationFinishTrigger();
 
     public void DashController()
     {

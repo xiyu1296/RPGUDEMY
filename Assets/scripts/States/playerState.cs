@@ -4,10 +4,11 @@ public class playerState
 {
     protected playerStateMachine StateMachine;
     protected player Player;
-
     private string aniboolname;
 
     protected Rigidbody2D rb;
+
+    protected bool AnimationFinishtrigger;
 
     protected float xInput;
     protected float yInput;
@@ -23,6 +24,7 @@ public class playerState
     public virtual void Enter()
     {
         Player.animator.SetBool(aniboolname,true);
+        AnimationFinishtrigger = false;
     }
 
     public virtual void Update()
@@ -37,4 +39,8 @@ public class playerState
         Player.animator.SetBool(aniboolname,false);
     }
 
+    public void AnimationFinishTrigger()
+    {
+        AnimationFinishtrigger = true;
+    }
 }
