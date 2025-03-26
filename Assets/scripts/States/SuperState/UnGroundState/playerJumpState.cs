@@ -19,6 +19,8 @@ public class playerJumpState : playerState
         
         if(rb.linearVelocity.y < 0)
             Player.PlayerStateMachine.ChangeState(Player.AirState);
+        Player.setVelocity(xInput*Player.movespeed,rb.linearVelocity.y);
+
     }
     
     public override void Exit()

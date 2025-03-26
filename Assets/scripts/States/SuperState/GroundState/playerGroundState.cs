@@ -15,6 +15,7 @@ public class playerGroundState : playerState
     public override void Update()
     {
         base.Update();
+
         
         if(Input.GetKeyDown(KeyCode.Space) && Player.isGroundedCheck())
             Player.PlayerStateMachine.ChangeState(Player.JumpState);

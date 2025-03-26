@@ -10,6 +10,7 @@ public class playerState
     protected Rigidbody2D rb;
 
     protected float xInput;
+    protected float yInput;
     
     public playerState( player _player, playerStateMachine _playerStateMachine,string _aniboolname)
     {
@@ -27,6 +28,8 @@ public class playerState
     public virtual void Update()
     {
         xInput = Input.GetAxisRaw("Horizontal");
+        yInput = Input.GetAxisRaw("Vertical");
+
     }
     
     public virtual void Exit()

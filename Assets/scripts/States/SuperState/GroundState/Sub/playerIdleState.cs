@@ -16,6 +16,7 @@ public class playerIdleState : playerGroundState
         base.Update();
         if(xInput != 0)
             Player.PlayerStateMachine.ChangeState(Player.MoveState);
+
     }
     
     public override void Exit()
