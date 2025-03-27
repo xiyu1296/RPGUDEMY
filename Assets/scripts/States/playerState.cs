@@ -13,6 +13,7 @@ public class playerState
     protected float xInput;
     protected float yInput;
     
+    
     public playerState( player _player, playerStateMachine _playerStateMachine,string _aniboolname)
     {
         this.aniboolname = _aniboolname;

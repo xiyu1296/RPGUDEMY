@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class player :MonoBehaviour
@@ -17,6 +19,13 @@ public class player :MonoBehaviour
     [SerializeField] private float dashcooldown;
     private float dashTimer;
 
+    [Header("Attack info")] 
+    [SerializeField] public int ComboWindow;
+    [SerializeField] public int[] AttackMovement;
+    
+    public int AttackNum;
+    public float LastAttackTime;
+
     
     
     [Header("Collision Check")] 
@@ -34,6 +43,7 @@ public class player :MonoBehaviour
     public Rigidbody2D rb { get; private set; }
     public Animator animator { get; private set; }
     public playerStateMachine PlayerStateMachine { get; private set; }
+    public bool isBusy{ get; private set;}
     
     //playerstates
     public playerMoveState MoveState { get; private set; }
@@ -64,15 +74,14 @@ public class player :MonoBehaviour
 
     public void Start()
     {
-        animator = GetComponentInChildren<Animator>();
-        AnimationController();
-        
+        animator = transform.Find("PlayerAnimation").GetComponent<Animator>();        
         PlayerStateMachine.Initialize(IdleState);
     }
 
     public void Update()
     {
         PlayerStateMachine.currentState.Update();
+        AnimationController();
         DashController();
     }
 
@@ -95,13 +104,24 @@ public class player :MonoBehaviour
     public void AnimationController()
     {
         animator.SetFloat("yVelocity",rb.linearVelocity.y);
+        animator.SetInteger("AttackNum",AttackNum);
     }
 
     public void setVelocity(float _xvelocity,float _yvelocity)
     {
         rb.linearVelocity = new Vector2(_xvelocity, _yvelocity);
         FlipController(_xvelocity);
+    }
 
+    public void ZeroVelocity() => rb.linearVelocity = new Vector2(0, 0);
+    
+    public IEnumerator BusyFor(float _seconds)
+    {
+        isBusy = true;
+        Debug.Log("IS BUSY");
+        yield return new WaitForSeconds(_seconds);
+        Debug.Log("NOT BUSY");
+        isBusy = false;
     }
 
     public bool isGroundedCheck() =>

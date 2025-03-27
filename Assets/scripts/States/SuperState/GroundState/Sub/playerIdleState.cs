@@ -14,7 +14,7 @@ public class playerIdleState : playerGroundState
     public override void Update()
     {
         base.Update();
-        if(xInput != 0)
+        if(xInput != 0 && !Player.isBusy)
             Player.PlayerStateMachine.ChangeState(Player.MoveState);
 
     }

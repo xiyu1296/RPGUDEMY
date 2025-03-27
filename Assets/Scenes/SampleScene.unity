@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 13129611}
   - component: {fileID: 13129613}
   - component: {fileID: 13129612}
+  - component: {fileID: 13129614}
   m_Layer: 0
   m_Name: PlayerAnimation
   m_TagString: Untagged
@@ -229,6 +230,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &13129614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 13129610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 067e774f9905453182f29554d6fa931b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &43167098
 GameObject:
   m_ObjectHideFlags: 0
@@ -721,6 +734,10 @@ MonoBehaviour:
   dashduration: 0.1
   dashDir: 0
   dashcooldown: 2
+  ComboWindow: 2
+  AttackMovement: 020000000100000003000000
+  AttackNum: 0
+  LastAttackTime: 0
   groundcheck: {fileID: 2052828246}
   groundDistance: 0.44
   wallcheck: {fileID: 541507936}
